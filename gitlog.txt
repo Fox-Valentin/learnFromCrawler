@@ -1,0 +1,90 @@
+commit 2a33bc31a59ce423f7f4be36cf740686b883820f
+Author: Tao Zang <tower1229@gmail.com>
+Date:   Sat Jul 15 14:03:23 2017 +0800
+
+    Delete .gitattributes
+
+commit 1c1bdab5a78b27ca8932ef0747a000f4f46dbfbf
+Author: Tao Zang <tower1229@gmail.com>
+Date:   Sat Jul 15 14:03:02 2017 +0800
+
+    Create  .gitattributes
+
+commit 86f2661bf2d3ce1f2c8b14131b77a6fa139cde37
+Author: Tao Zang <tower1229@gmail.com>
+Date:   Fri Jun 16 14:02:26 2017 +0800
+
+    Update README.md
+
+commit 75b3e76b6289f527de0082d0cacdeb4e93ed1f5a
+Author: tower1229 <tower1229@qq.com>
+Date:   Fri Jun 9 23:30:05 2017 +0800
+
+    update
+:...skipping...
+commit 2a33bc31a59ce423f7f4be36cf740686b883820f
+Author: Tao Zang <tower1229@gmail.com>
+Date:   Sat Jul 15 14:03:23 2017 +0800
+
+    Delete .gitattributes
+
+commit 1c1bdab5a78b27ca8932ef0747a000f4f46dbfbf
+Author: Tao Zang <tower1229@gmail.com>
+Date:   Sat Jul 15 14:03:02 2017 +0800
+
+    Create  .gitattributes
+
+commit 86f2661bf2d3ce1f2c8b14131b77a6fa139cde37
+Author: Tao Zang <tower1229@gmail.com>
+Date:   Fri Jun 16 14:02:26 2017 +0800
+
+    Update README.md
+
+commit 75b3e76b6289f527de0082d0cacdeb4e93ed1f5a
+Author: tower1229 <tower1229@qq.com>
+Date:   Fri Jun 9 23:30:05 2017 +0800
+
+    update
+
+commit 0693d5ba841cd91e6c4986161694347142a4d291
+Author: tower1229 <tower1229@qq.com>
+Date:   Fri Jun 9 14:59:57 2017 +0800
+
+    remove 'request'
+
+commit 9150dd1c9ad13cd4bbb0dcf469ab5728b640f3f7
+Merge: 6bb2bbc 371b902
+Author: tower1229 <tower1229@qq.com>
+Date:   Fri Jun 9 14:35:52 2017 +0800
+
+    Merge branch 'master' of https://github.com/tower1229/crawler
+
+commit 6bb2bbc3057fa54c94a443c4b4a9d5740d38ea54
+Author: tower1229 <tower1229@qq.com>
+Date:   Fri Jun 9 14:35:19 2017 +0800
+
+    bug fix
+
+commit 371b9029e6111998c308983b3c52d75680ea04bc
+Author: Tao Zang <tower1229@gmail.com>
+Date:   Fri Jun 9 14:15:32 2017 +0800
+
+    Create README.md
+
+commit b532dff18b0ae8a6a7f23720f0ab20efc0e3adf2
+Author: Tao Zang <tower1229@gmail.com>
+Date:   Fri Jun 9 14:13:04 2017 +0800
+
+    Create README.md
+
+commit 8a820fb867125ce05a0cc5fd0ecc7563dce5fe8d
+Author: tower1229 <tower1229@qq.com>
+Date:   Fri Jun 9 14:05:52 2017 +0800
+
+    init
+
+commit 2e44160932b417e50609b5144b9424600b77236c
+Author: Tao Zang <tower1229@gmail.com>
+Date:   Fri Jun 9 13:50:31 2017 +0800
+
+    Initial commit
