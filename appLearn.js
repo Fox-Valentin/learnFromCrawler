@@ -72,15 +72,19 @@ let syncLast = function(_csrf, op) {
   });
 };
 //保存内容
+// params $ news_title $应该指的是 页面的dom对象
 let savedContent = function($, news_title) {
+  // 文件路径是否存在的 不存在则创建它 这里是同步方法
   if (!fs.existsSync(articalSavePath)) {
     fs.mkdirSync(articalSavePath);
   }
+  // 截取文字内容
   $('.article-content p').each(function(index, item) {
     let x = $(this).text().trim();
     if (x) {
       x = '  ' + x + '\n';
     }
+    // 保存文件 appendFile params 路径 ， 数据 ，编码 ，回调
     fs.appendFile('./data/' + news_title + '.txt', x, 'utf-8', function(err) {
       if (err) {
         console.log(err);
@@ -90,10 +94,12 @@ let savedContent = function($, news_title) {
 };
 //保存图片
 let savedImg = function($, news_title) {
+  // 检查和创建文件夹
   if (!fs.existsSync(imgSavePath)) {
     fs.mkdirSync(imgSavePath);
   }
   $('.article-content img').each(function(index, item) {
+    // 获取图片标题
     let img_title = $(this).parent().next().text().trim().replace(/\//g, '-');
     if (img_title.length > 30) {
       img_title = img_title.slice(0, 30);
@@ -101,9 +107,11 @@ let savedImg = function($, news_title) {
     if (!img_title) {
       img_title = "Null";
     }
+    // 图片文件名
     const img_filename = img_title + '.jpg';
+    // 图片资源路径
     const img_src = $(this).attr('src'); //获取图片的url
-
+    // 创建写入文件流 并保存文件
     request(img_src).pipe(fs.createWriteStream(imgSavePath + '/' + news_title + '---' + img_filename));
   });
 };
