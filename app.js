@@ -3,7 +3,6 @@
 // get参数需要URI编码成十六进制
 var http = require('http')
 const cheerio = require('cheerio')
-const request = require('request')
 const fs = require('fs')
 
 const startId = "653093"
@@ -42,14 +41,10 @@ let getLastId = function(_csrf, op) {
 }
 // 保存内容
 // 传入 dom对象 和 news_title
-// 检查 目标文件夹是否存在
 // 提取文字内容 组装数据
 // 存储数据
 
 let saveContent = function($, news_title){
-  if(!fs.existsSync(articleSavePath)){
-    fs.mkdirSync(articleSavePath)
-  }
   $('.article-content p').each(function(index, item) {
     let text = $(this).text().trim()
     if (text) {
@@ -75,17 +70,22 @@ let saveImg = function($,news_title){
     fs.mkdirSync(imgSavePath)
   }
   $('.article-content img').each(function(index, item) {
-    let img_title = $(this).parent().next().text().trim().replace(/\//g, '-')
-    if(img_title.length > 30){
-      img_title = img_title.slice(0,30)
-    }
-    if(!img_title){
-      img_title = 'null'
-    }
-    console.log(img_title)
-    const img_filename = img_title + '.jpg'
     const img_src = $(this).attr('src')
-    request(img_src).pipe(fs.createWriteStream(imgSavePath + '/' + news_title + '--------' +img_filename))
+    const img_filename = news_title + '---' + index + img_src.match(/\.[^.]+$/)[0]
+    http.get(img_src,function(res){
+      var imgData = ''
+      res.setEncoding('binary')
+      res.on('data',function(chunk){
+        imgData += chunk
+      })
+      res.on('end',function(){
+        fs.writeFile(imgSavePath + '/' + img_filename,imgData,'binary',function(err){
+          if(err){
+            throw err
+          }
+        })
+      })
+    })
   })
 }
 
@@ -122,6 +122,9 @@ let fetchPage = function(id, fullpath){
         const $ = cheerio.load(html)
         let time = $('.cnbeta-article .title .meta span:first-child').text().trim()
         let news_title = $('.cnbeta-article .title h1').text().trim().replace(/\//g,'-')
+        if(news_title.length > 40) {
+          news_title = news_title.slice(0,40)
+        }
         saveContent($,news_title)
         saveImg($,news_title)
         let _csrf = $('meta[name="csrf-token"]').attr('content')
