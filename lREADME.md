@@ -83,6 +83,16 @@ request
  req.pipe(request('http://mysite.com/doodle.png')).pipe(resp)
 ```
  当然 这种方式 会产生安全隐患<br>
+可以在请求中 监听响应事件 生成响应实例 处理响应<br>
+```
+request
+  .get('http://google.com/img.png')
+  .on('response', function(response) {
+    console.log(response.statusCode) // 200
+    console.log(response.headers['content-type']) // 'image/png'
+  })
+  .pipe(request.put('http://mysite.com/img.png'))
+```
  这个就讲到这里 它还有更多的应用 例如定制请求头等 更多内容见参考<br>
 参考<br>
 https://segmentfault.com/a/1190000000385867<br>
