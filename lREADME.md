@@ -46,6 +46,44 @@ https://www.ibm.com/developerworks/cn/xml/x-urlni.html<br>
 http://www.cnblogs.com/gaojing/archive/2012/02/04/2413626.html<br>
 
 ### request
-参考
-https://segmentfault.com/a/1190000000385867
-待更新
+request一般用来发起定制请求
+请求文件流
+```
+request('http://google.com/doodle.png').pipe(fs.createWriteStream('doodle.png'))
+```
+或者将文件传给请求<br>
+```
+fs.createReadStream('file.json').pipe(request.put('http://mysite.com/obj.json'))
+```
+也可以将文件流pipe给自己<br>
+```
+request.get('http://google.com/img.png').pipe(request.put('http://mysite.com/img.png'))
+```
+还可以处理响应<br>
+```
+request
+  .get('http://google.com/img.png')
+  .on('response', function(response) {
+    console.log(response.statusCode) // 200
+    console.log(response.headers['content-type']) // 'image/png'
+  })
+  .pipe(request.put('http://mysite.com/img.png'))
+```
+可以处理流中的错误事件<br>
+```
+request
+  .get('http://mysite.com/doodle.png')
+  .on('error', function(err) {
+    console.log(err)
+  })
+  .pipe(fs.createWriteStream('doodle.png'))
+```
+ 可以在处理请求中 返回其他资源的响应<br>
+```
+ req.pipe(request('http://mysite.com/doodle.png')).pipe(resp)
+```
+ 当然 这种方式 会产生安全隐患<br>
+ 这个就讲到这里 它还有更多的应用 例如定制请求头等 更多内容见参考<br>
+参考<br>
+https://segmentfault.com/a/1190000000385867<br>
+https://www.npmjs.com/package/request<br>
